@@ -1,0 +1,17 @@
+name: "auto-assign"
+description: "Automatically assign team for review"
+inputs:
+  TEAM:
+    required: true
+    description: "Team name"
+  GITHUB_TOKEN:
+    required: true
+    description: "Your github token"
+    default: ${{ github.token }}
+  PR_NUMBER:
+    required: true
+    description: "The number of PR to review, do not change this"
+    default: ${{ github.event.number }}
+runs:
+  using: "node16"
+  main: "dist/index.js"
