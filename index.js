@@ -11,9 +11,9 @@ const defaultParams = {
 async function main() {
     await octokit.request("POST /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers", {
         ...defaultParams,
-        pull_number: parseInt(core.getInput("PR_NUMBER")),
+        pull_number: github.context.payload.pull_request.number,
         team_reviewers: [core.getInput("TEAM")]
-    })
+    });
 }
 
 main();
